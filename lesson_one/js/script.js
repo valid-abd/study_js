@@ -6,5 +6,5 @@ let mission;
 let perion;
 
 
-alert (' привет мир ')
+alert (' привет мир ');
 console.log('что то интересное ))');
