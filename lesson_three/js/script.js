@@ -6,8 +6,8 @@ let deposit = confirm('Есть ли у вас депозит в банке?');
 
 let questions = prompt("Какие обязательные ежемесячные расходы у вас есть?");
 let questions2 = prompt('Во сколько это обойдется?');
-let questions = prompt("Какие обязательные ежемесячные расходы у вас есть?");
-let questions2 = prompt('Во сколько это обойдется?');
+// let questions = prompt("Какие обязательные ежемесячные расходы у вас есть?");
+// let questions2 = prompt('Во сколько это обойдется?');
 let mission = 65250; // моя цель 
 let budgetMonth = money - questions2; // чистая прибыль
 
@@ -15,6 +15,8 @@ let budgetDay = budgetMonth / 30; // бюджет на месяц
 
 
 console.log('Мои обязательные ежемесячные расходы: ' + questions);
+console.log('Мои обязательные ежемесячные расходы: ' + questions);
+console.log('Мне обойдется в ' + questions2);
 console.log('Мне обойдется в ' + questions2);
 console.log('Доход за месяц с вычетам расхода : ' + budgetMonth);
 console.log('Моя цель будет достигаться месяцев: ' + Math.ceil(mission / budgetMonth));
