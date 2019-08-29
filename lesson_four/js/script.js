@@ -3,33 +3,30 @@
 let money = prompt('Ваш месячный доход?', 10000);
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'аренда, питание');
 let deposit = confirm('Есть ли у вас депозит в банке?');
-
+let mission = 65250; // моя цель 
 let period = 7;
 let income = 'Фриланс';
 
-console.log('мои расходы :' + addExpenses);
+console.log('мои расходы :' + addExpenses.toLowerCase().split(','));
 
-
-
-let questions2 = prompt("Какие обязательные ежемесячные расходы у вас есть?");
+let questions1 = prompt("Какие обязательные ежемесячные расходы у вас есть?");
+let questions2 = prompt('Во сколько это обойдется?', 1500);
 
 function getExpensesMonth() { /// возвращает расходы за месяц
-	return prompt('Во сколько это обойдется?', 1500);
-}
-let questions01 = getExpensesMonth();
+	return questions2 ;
+};
 
+ console.log(' Расходы на протяжении месяца : '+ getExpensesMonth());
 
-let mission = 65250; // моя цель 
-// let budgetMonth = money - questions2; // чистая прибыль
+let getAccumulatedMonth = function() {
+	return money - getExpensesMonth();
+};
 
-function getAccumulatedMonth(x, y) {
-	let accumulatedMonth = x - y;
-	console.log('чистая прибыль: ', accumulatedMonth);
-}
+let budgetMonth = getAccumulatedMonth(money, getExpensesMonth());
+console.log(' чистая прибыль: ' + getAccumulatedMonth());
 
-let budgetMonth = getAccumulatedMonth(money, questions01);
-console.trace(budgetMonth);
-let budgetDay = budgetMonth / 30; // бюджет на месяц 
+console.log(budgetMonth);
+let budgetDay = getAccumulatedMonth() / 30; // бюджет на месяц 
 
 let showTypeOf = function (data) {
 	console.log(data, typeof (data));
@@ -45,13 +42,15 @@ function getStatusIncome() {
 		(budgetDay >= 0) ? 'Низкий уровень дохода' :
 		' Что то пошло не так ';
 	console.log(cmd);
-}
+};
 getStatusIncome();
 
 function getTargetMonth() {
-	console.log('Моя цель будет достигаться месяцев: ' + Math.ceil(mission / budgetDay));
+	return mission / getAccumulatedMonth();
 };
+console.log('Моя цель будет достигаться месяцев: ' + Math.ceil(getTargetMonth()));
 
-getTargetMonth(); // за какой период будет достигнута цель 
+ // за какой период будет достигнута цель 
+// console.log('Моя цель будет достигаться месяцев: ', getTargetMonth());
 
-console.log('Мои обязательные ежемесячные расходы: ' + questions2);
+console.log('Мои обязательные ежемесячные расходы: ' + questions1.toLowerCase().split(','));
