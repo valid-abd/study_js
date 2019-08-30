@@ -9,10 +9,11 @@ let income = 'Фриланс';
 
 let start = function () {
 	prompt('Ваш месячный доход?', 10000);
-	while (isNaN(money) || money === '' || money === null) {
+	do {
 		money = prompt('Ваш месячный доход?', 10000);
 		console.log('money: ', money);
 	}
+	while (isNaN(money) || money === '' || money === null);
 };
 
 start();
@@ -23,16 +24,21 @@ let questions1;
 let questions01; 
 
 let getExpensesMonth = function () {
-	let sum = 0;
+	let sum = 0, que;
 	for (let i = 0; i < 2; i++) {
 		if (i === 0) {
 			questions1 = prompt(' Введите обязательную статью расходов?', ' Коммуналка');
 		}
-
 		if (i === 1) {
 			questions01 = prompt(' Введите обязательную статью расходов?', ' дорога');
 		}
-		sum += +prompt(' Во сколько это обойдется?', 2500);
+		do {
+			que = prompt(' Во сколько это обойдется?', 2500);
+			// console.log('sum: ', sum);
+		}
+		while (isNaN(que) || que === '' || que === null);
+		
+		sum += +que;
 	}
 	return sum;
 };
@@ -60,6 +66,14 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
+
+
+function getTargetMonth() {
+	return mission / getAccumulatedMonth();
+};
+let myIncome = (getTargetMonth() > 0) ? 'Моя цель будет достигаться месяцев: ' + Math.ceil(getTargetMonth()):
+' Цель не будет достигнута '
+
 function getStatusIncome() {
 	let cmd = (budgetDay >= 800) ? ' Высокий уровень дохода ' :
 		(budgetDay >= 300) ? ' Средний уровень дохода ' :
@@ -69,12 +83,9 @@ function getStatusIncome() {
 };
 getStatusIncome();
 
-function getTargetMonth() {
-	return mission / getAccumulatedMonth();
-};
-console.log('Моя цель будет достигаться месяцев: ' + Math.ceil(getTargetMonth()));
-console.log('Мои обязательные ежемесячные расходы: ' + questions1.toLowerCase().split(','));
+// console.log('Моя цель будет достигаться месяцев: ' + Math.ceil(getTargetMonth()));
+console.log(questions1.toLowerCase().split(','));
 // за какой период будет достигнута цель 
 // console.log('Моя цель будет достигаться месяцев: ', getTargetMonth());
 console.log('мои расходы :' + addExpenses.toLowerCase().split(','));
-console.log('Мои обязательные ежемесячные расходы: ' + questions1.toLowerCase().split(','));
+console.log(questions1.toLowerCase().split(','));
