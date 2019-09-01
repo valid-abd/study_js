@@ -1,3 +1,14 @@
+// Hello.
+//
+// This is JSHint, a tool that helps to detect errors and potential
+// problems in your JavaScript code.
+//
+// To start, simply enter some JavaScript anywhere on this page. Your
+// report will appear on the right side.
+//
+// Additionally, you can toggle specific options in the Configure
+// menu.
+
 "use strict";
 /*jshint esversion: 6 */
 let money;
@@ -8,20 +19,14 @@ let period = 5;
 let income = 'Фриланс';
 
 let start = function () {
-	prompt('Ваш месячный доход?', 10000);
 	do {
 		money = prompt('Ваш месячный доход?', 10000);
-		console.log('money: ', money);
-	}
-	while (isNaN(money) || money === '' || money === null);
+	}while (isNaN(money) || money.trim() === '' || money === null);
 };
-
 start();
 
-
-
 let questions1;
-let questions01; 
+let questions01;
 
 let getExpensesMonth = function () {
 	let sum = 0, que;
@@ -34,10 +39,8 @@ let getExpensesMonth = function () {
 		}
 		do {
 			que = prompt(' Во сколько это обойдется?', 2500);
-			// console.log('sum: ', sum);
 		}
-		while (isNaN(que) || que === '' || que === null);
-		
+		while (isNaN(que) || que.trim() === '' || que === null);
 		sum += +que;
 	}
 	return sum;
@@ -48,7 +51,6 @@ let exensesAmoun = getExpensesMonth();
 console.log(' Расходы на протяжении месяца : ' + exensesAmoun);
 
 let getAccumulatedMonth = function () {
-
 	return money - exensesAmoun;
 };
 
@@ -69,10 +71,16 @@ showTypeOf(deposit);
 
 
 function getTargetMonth() {
-	return mission / getAccumulatedMonth();
-};
-let myIncome = (getTargetMonth() > 0) ? 'Моя цель будет достигаться месяцев: ' + Math.ceil(getTargetMonth()):
-' Цель не будет достигнута '
+	let myIncome = Math.ceil(mission / getAccumulatedMonth());
+	// let myIncome =  0;
+	if (myIncome > 0) {
+		console.log(' моя цель будет достигаться ' + myIncome + ' месяц');
+	} else {
+		console.log(' цель не будет доcтигаться');
+	}
+}
+
+getTargetMonth();
 
 function getStatusIncome() {
 	let cmd = (budgetDay >= 800) ? ' Высокий уровень дохода ' :
@@ -80,7 +88,7 @@ function getStatusIncome() {
 		(budgetDay >= 0) ? 'Низкий уровень дохода' :
 		' Что то пошло не так ';
 	console.log(cmd);
-};
+}
 getStatusIncome();
 
 // console.log('Моя цель будет достигаться месяцев: ' + Math.ceil(getTargetMonth()));
