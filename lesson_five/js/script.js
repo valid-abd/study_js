@@ -57,16 +57,15 @@ let getAccumulatedMonth = function () {
 let budgetMonth = getAccumulatedMonth(money, exensesAmoun);
 console.log(' чистая прибыль: ' + getAccumulatedMonth());
 
-console.log(budgetMonth);
 let budgetDay = getAccumulatedMonth() / 30; // бюджет на месяц 
 
-let showTypeOf = function (data) {
-	console.log(data, typeof (data));
-};
+// let showTypeOf = function (data) {
+// 	console.log(data, typeof (data));
+// };
 
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
+// showTypeOf(money);
+// showTypeOf(income);
+// showTypeOf(deposit);
 
 
 
@@ -78,7 +77,7 @@ function getTargetMonth() {
 	} else {
 		console.log(' цель не будет доcтигаться');
 	}
-}
+};
 
 getTargetMonth();
 
@@ -92,8 +91,8 @@ function getStatusIncome() {
 getStatusIncome();
 
 // console.log('Моя цель будет достигаться месяцев: ' + Math.ceil(getTargetMonth()));
-console.log(questions1.toLowerCase().split(','));
+
 // за какой период будет достигнута цель 
 // console.log('Моя цель будет достигаться месяцев: ', getTargetMonth());
 console.log('мои расходы :' + addExpenses.toLowerCase().split(','));
-console.log(questions1.toLowerCase().split(','));
+console.log(questions01.toLowerCase().split(','));
