@@ -32,34 +32,36 @@ let appData = {
 	deposit: false,
 	mission: 50000,
 	period: 3,
+	budget: money,
+	budgetDay: 0,
+	budgetMonth: 0,
+	expensesMonth: 0,
 	asking: function () {
 		let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'аренда, питание');
 		appData.addExpenses = addExpenses.toLowerCase().split(',');
 		appData.deposit = confirm('Есть ли у вас депозит в банке?');
-	},
-	budget: money,
-	budgetDay: 0,
-	// budgetMonth: 0,
-	expensesMonth: 0,
-	getExpensesMonth: function () {
-		let sum = 0, que;
 		for (let i = 0; i < 2; i++) {
 			if (i === 0) {
-				appData.questions1 = prompt(' Введите обязательную статью расходов?', ' Коммуналка');
-			}
-			if (i === 1) {
-				appData.questions01 = prompt(' Введите обязательную статью расходов?', ' дорога');
+				let questions1 = prompt(' Введите обязательную статью расходов?', ' Коммуналка');
+				let questions01 = prompt(' Введите обязательную статью расходов?', ' дорога');
+				let que;
 			}
 			do {
 				que = prompt(' Во сколько это обойдется?', 2500);
 			}
 			while (isNaN(que) || !que.trim());
-			sum += +que;
+			// sum += +que;
+			appData.expenses[questions1] = que;
+			appData.expenses[questions01] = que;
 		}
-		return sum;
-		
 	},
 
+	getExpensesMonth: function () {
+	for (let key in appData.expenses){
+		appData.expensesMonth += +appData.expenses[key];
+	}
+		
+	},
 	getAccumulatedMonth: function () {
 		return money - exensesAmoun;
 	},
