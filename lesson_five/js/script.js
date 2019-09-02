@@ -21,7 +21,8 @@ let income = 'Фриланс';
 let start = function () {
 	do {
 		money = prompt('Ваш месячный доход?', 10000);
-	}while (isNaN(money) || money.trim() === '' || money === null);
+	}
+	while (isNaN(money) || money === null || money.trim() === '');
 };
 start();
 
@@ -40,7 +41,7 @@ let getExpensesMonth = function () {
 		do {
 			que = prompt(' Во сколько это обойдется?', 2500);
 		}
-		while (isNaN(que) || que.trim() === '' || que === null);
+		while (isNaN(que) || que === null || que.trim() === '');
 		sum += +que;
 	}
 	return sum;
