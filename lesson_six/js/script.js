@@ -1,29 +1,16 @@
-// Hello.
-//
-// This is JSHint, a tool that helps to detect errors and potential
-// problems in your JavaScript code.
-//
-// To start, simply enter some JavaScript anywhere on this page. Your
-// report will appear on the right side.
-//
-// Additionally, you can toggle specific options in the Configure
-// menu.
 
 "use strict";
 /*jshint esversion: 6 */
 let money;
-// let mission = 65250; // моя цель 
-// let period = 5;
-let income = 'Фриланс';
 
 let start = function () {
 	do {
 		money = prompt('Ваш месячный доход?', 10000);
-	} while (isNaN(money) || !money.trim());
+	}
+	while (isNaN(money) || money === null || money.trim() === '');
 };
 start();
-let questions1;
-let questions01;
+
 let appData = {
 	income: {},
 	addIncome: [],
@@ -38,63 +25,71 @@ let appData = {
 	expensesMonth: 0,
 	asking: function () {
 		let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'аренда, питание');
-		appData.addExpenses = addExpenses.toLowerCase().split(',');
-		appData.deposit = confirm('Есть ли у вас депозит в банке?');
+			appData.addExpenses = addExpenses.toLowerCase().split(',');
+			appData.deposit = confirm('Есть ли у вас депозит в банке?');
 		for (let i = 0; i < 2; i++) {
-			if (i === 0) {
 				let questions1 = prompt(' Введите обязательную статью расходов?', ' Коммуналка');
-				let questions01 = prompt(' Введите обязательную статью расходов?', ' дорога');
 				let que;
-			}
 			do {
 				que = prompt(' Во сколько это обойдется?', 2500);
 			}
-			while (isNaN(que) || !que.trim());
-			// sum += +que;
+			while (isNaN(que) || que === null || que.trim() === '');
 			appData.expenses[questions1] = que;
-			appData.expenses[questions01] = que;
-		}
-	},
-
-	getExpensesMonth: function () {
-	for (let key in appData.expenses){
-		appData.expensesMonth += +appData.expenses[key];
-	}
 		
-	},
-	getAccumulatedMonth: function () {
-		return money - exensesAmoun;
-	},
-	getTargetMonth: function () {
-		let myIncome = Math.ceil(appData.mission / appData.getAccumulatedMonth());
-	
-		// let myIncome =  0;
-		if (myIncome > 0) {
-			console.log(' моя цель будет достигаться ' + myIncome + ' месяц');
-		} else {
-			console.log(' цель не будет доcтигаться');
 		}
-
 	},
+	getExpensesMonth: function () {
+		for (let key in appData.expenses){
+			appData.expensesMonth += +appData.expenses[key];
+		}
+	},
+	getBudget: function () {
+	appData.budgetMonth= appData.budget - appData.expensesMonth;
+	appData.budgetDay = Math.floor(appData.budgetMonth / 30); // 
+	},
+
+	getTargetMonth: function () {
+		return appData.mission / appData.budgetMonth;
+		// return appData.mission / appData.budgetMonth;
+		},
 	getStatusIncome: function () {
-		let cmd = (budgetDay >= 800) ? ' Высокий уровень дохода ' :
-			(budgetDay >= 300) ? ' Средний уровень дохода ' :
-			(budgetDay >= 0) ? 'Низкий уровень дохода' :
+		let cmd = (appData.budgetDay >= 800) ? ' Высокий уровень дохода ' :
+			(appData.budgetDay >= 300) ? ' Средний уровень дохода ' :
+			(appData.budgetDay >= 0) ? 'Низкий уровень дохода' :
 			' Что то пошло не так ';
 		console.log(cmd);
-	},
-
+	
+	}
 };
-let exensesAmoun = appData.getExpensesMonth();
-let budgetMonth = appData.getAccumulatedMonth(money, exensesAmoun);
-console.log(' чистая прибыль: ' + appData.getAccumulatedMonth());
-console.log(' Расходы на протяжении месяца : ' + exensesAmoun);
-let budgetDay = appData.getAccumulatedMonth() / 30; // бюджет на месяц 
+appData.asking();
+appData.getExpensesMonth();
+appData.getBudget();
+
+console.log(' чистая прибыль: ' + appData.expensesMonth);
+appData.getStatusIncome();
+	if (appData.getTargetMonth() > 0) {
+		console.log(' моя цель будет достигаться ' + Math.ceil(appData.getTargetMonth()) + ' месяц');
+	} else {
+		console.log(' цель не будет доcтигаться');
+	}
+	// console.log(' Расходы на протяжении месяца : ' + appData.getExpensesMonth());
+	
+
+for (let key in appData) {
+	console.log(' Наша программа включает в себя данные: ' + key + ' - ' + appData[key]);
+};
+// appData.getExpensesMonth();
+// appData.getBudget(money, exensesAmoun);
+// let budgetMonth = appData.getBudget();
+
+ // бюджет на месяц 
 
 // console.log(questions1.toLowerCase().split(','));
 // console.log(questions01.toLowerCase().split(','));
-appData.getStatusIncome();
-appData.getTargetMonth();
+// appData.getStatusIncome();
+//  appData.getStatusIncome();
+// appData.getTargetMonth();
+
 
 
 
