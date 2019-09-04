@@ -40,7 +40,7 @@
 				appData.income[itemIncome] = cashIncome;
 				appData.income[itemIncome] = itemIncome;
 			}
-			let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'аренда, питание');
+			let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'аренда питание');
 			appData.addExpenses = addExpenses.toLowerCase().split(',');
 			appData.deposit = confirm('Есть ли у вас депозит в банке?');
 			for (let i = 0; i < 2; i++) {
@@ -118,10 +118,12 @@
 	for (let key in appData) {
 		console.log(' Наша программа включает в себя данные: ' + key + ' - ' + appData[key]);
 	}
-	// appData.getInfoDeposit();
-	// console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
-	console.log(appData);
-	console.log(appData.addExpenses.join(', '));
 
-	console.log(appData.income);
-
+// appData.addExpenses = addExpenses.split(',').map(function (item) {
+// 			return item.trim()
+	console.log(appData.addExpenses.map(function (item) {
+			return item[0].toUpperCase() + item.slice(1);
+		 }).join(', '));
+		
+	
+// console.log(appData.addExpenses);
