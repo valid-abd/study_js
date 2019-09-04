@@ -35,7 +35,6 @@ let appData = {
 			}
 			while (isNaN(que) || que === null || que.trim() === '');
 			appData.expenses[questions1] = que;
-		
 		}
 	},
 	getExpensesMonth: function () {
