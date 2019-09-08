@@ -40,6 +40,7 @@
 				appData.income[itemIncome] = cashIncome;
 				appData.income[itemIncome] = itemIncome;
 			}
+			
 			let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'аренда, питание');
 			appData.addExpenses = addExpenses.toLowerCase().split(',').map(function (item) {
 				return item.trim()});

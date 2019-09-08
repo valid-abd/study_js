@@ -34,7 +34,7 @@ let liFirst = document.createElement('li');
 liFirst.textContent = 'Глава 8: За пределами ES6';
 console.log(liFirst); // создали li элемент 
 collect[2].append(liFirst);
-console.log(elem.parentNode);
+// console.log(elem.parentNode);
 
 
 collect[2].appendChild(elem[26]);
