@@ -13,7 +13,10 @@ background-image: url(./image/fon.jpg);
 `;	// добавляем или изменяем стили 
 // ava.setAttribute('src', '');
 let collect = document.querySelectorAll('ul');
-let elem = document.querySelectorAll('li');
+// let elem = document.querySelectorAll('li');
+let elem = collect[2].querySelectorAll('li');
+let elem0 = collect[0].querySelectorAll('li');
+let elem5 = collect[5].querySelectorAll('li');
 
 // изменение порядка глав книг
 let itemBooks = document.querySelectorAll('.books');
@@ -28,26 +31,21 @@ itemBooks[0].appendChild(chapterBooks[2]);
 
 let title = document.querySelectorAll('a');
 title[2].innerHTML = "Книга 3. this и Прототипы Объектов"; // изменение наименование главы
-console.log(elem[18].parentNode);
 
 let liFirst = document.createElement('li');
 liFirst.textContent = 'Глава 8: За пределами ES6';
-console.log(liFirst); // создали li элемент 
-collect[2].append(liFirst);
-// console.log(elem.parentNode);
+collect[2].appendChild(liFirst);	
+collect[2].append(elem[9]);
+// console.log(elem);
 
+collect[0].insertBefore(elem0[3], elem0[2]);
+collect[0].insertBefore(elem0[6], elem0[2]);
+collect[0].insertBefore(elem0[8], elem0[2]);
+collect[0].append(elem0[2]);
+collect[0].append(elem0[10]);
 
-collect[2].appendChild(elem[26]);
+collect[5].insertBefore(elem5[2], elem5[6]);
+collect[5].insertBefore(elem5[9], elem5[3]);
+collect[5].insertBefore(elem5[5], elem5[8]);
 
-collect[0].insertBefore(elem[8], elem[7]);
-collect[0].insertBefore(elem[6], elem[4]);
-collect[0].insertBefore(elem[8], elem[4]);
-collect[0].appendChild(elem[2]);
-collect[0].appendChild(elem[10]);
-
-collect[5].insertBefore(elem[55], elem[49]);
-collect[5].insertBefore(elem[48], elem[51]);
-collect[5].insertBefore(elem[53], elem[51]);
-collect[5].insertBefore(elem[52], elem[51]);
-
-// console.log(collect, elem);
+// console.log(collect[2]);
