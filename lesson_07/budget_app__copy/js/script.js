@@ -15,28 +15,27 @@ console.log('checkbox: ', checkbox);
 let entryField = document.querySelectorAll('.additional_income-item');
 console.log('entryField: ', entryField);
 
-let results = document.querySelectorAll('.result-total');
-console.log('results: ', results);
+// let results = document.querySelectorAll('.result-total');
+// console.log('results: ', results);
 
-let Myinpu01 = document.querySelector('.salary-amount');
-console.log('Myinpu01: ', Myinpu01);
-let Myinpu02 = document.querySelector('input[class=income-title]');
-console.log('Myinpu02: ', Myinpu02);
-let Myinpu03 = document.querySelector('.income-amount');
-console.log('Myinpu03: ', Myinpu03);
-let Myinpu04 = document.querySelector('input[class=expenses-title]');
-console.log('Myinpu04: ', Myinpu04);
-let Myinpu05 = document.querySelector('.expenses-amount');
-console.log('Myinpu05: ', Myinpu05);
-let Myinpu06 = document.querySelector('.deposit-amount');
-console.log('Myinpu06: ', Myinpu06);
-let Myinpu07 = document.querySelector('.deposit-percent');
-console.log('Myinpu07: ', Myinpu07);
-let Myinpu08 = document.querySelector('.target-amount');
-console.log('Myinpu08: ', Myinpu08);
-let Myinpu09 = document.querySelector('.period-select');
-console.log('Myinpu09: ', Myinpu09);
-let Myinpu10 = document.querySelector('.additional_expenses-item');
-console.log('Myinpu10: ', Myinpu10);
+let BudgetMonthValue = document.querySelectorAll('.budget_month-value');
+let BudgetDayValue = document.querySelectorAll('.budget_day-value');
+let ExpensesMonthValue = document.querySelectorAll('.expenses_month-value');
+let AdditionalIncomeValue = document.querySelectorAll('.additional_income-value');
+let AdditionalExpensesValue = document.querySelectorAll('.additional_expenses-value');
+let IncomePeriodValue = document.querySelectorAll('.income_period-value');
+let TargetMonthValue = document.querySelectorAll('.target_month-value');
+
+
+let SalaryAmount = document.querySelector('.salary-amount');
+let IncomeTitle = document.querySelector('.income-title');
+let IncomeAmount = document.querySelector('.income-amount');
+let ExpensesTitle = document.querySelector('.expenses-title');
+let ExpensesAmount = document.querySelector('.expenses-amount');
+let DepositAmount = document.querySelector('.deposit-amount');
+let DepositPercent = document.querySelector('.deposit-percent');
+let TargetAmount = document.querySelector('.target-amount');
+let PeriodSelect = document.querySelector('.period-select');
+let AdditionalExpensesItem = document.querySelector('.additional_expenses-item');
 
 
