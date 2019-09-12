@@ -9,16 +9,14 @@ let checkbox = document.querySelectorAll('#deposit-check');
 let entryField = document.querySelectorAll('.additional_income-item');
 
 let results = document.querySelectorAll('.result-total');
-console.log('results: ', results);
 
-let BudgetMonthValue = document.querySelectorAll('.budget_month-value');
-let BudgetDayValue = document.querySelectorAll('.budget_day-value');
-let ExpensesMonthValue = document.querySelectorAll('.expenses_month-value');
-let AdditionalIncomeValue = document.querySelectorAll('.additional_income-value');
-let AdditionalExpensesValue = document.querySelectorAll('.additional_expenses-value');
-let IncomePeriodValue = document.querySelectorAll('.income_period-value');
-let TargetMonthValue = document.querySelectorAll('.target_month-value');
-
+let BudgetMonthValue = document.getElementsByClassName('budget_month-value')[0];
+let BudgetDayValue = document.getElementsByClassName('budget_day-value')[0];
+let ExpensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
+let AdditionalIncomeValue = document.getElementsByClassName('additional_income-value')[0];
+let AdditionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0];
+let IncomePeriodValue = document.getElementsByClassName('income_period-value')[0];
+let TargetMonthValue = document.getElementsByClassName('target_month-value')[0];
 
 let SalaryAmount = document.querySelector('.salary-amount');
 let IncomeTitle = document.querySelectorAll('.income-title')[1];
