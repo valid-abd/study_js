@@ -7,6 +7,8 @@ let startButton = document.querySelector('#start');
 
 let MaxButton = document.getElementsByTagName('button')[0];
 let MaxButton2 = document.querySelectorAll('button')[1];
+let cancel = document.getElementById('cancel');
+
 
 let checkbox = document.querySelector('#deposit-check');
 // console.log('checkbox: ', checkbox);
@@ -68,10 +70,9 @@ let appData = {
 		appData.getAddIncome();
 		appData.getBudget();
 		appData.showResult();
-
+		appData.noneInput();
 
 	},
-
 	showResult: function(){
 		BudgetMonthValue.value = appData.budgetMonth;
 		BudgetDayValue.value = appData.budgetDay;
@@ -182,10 +183,17 @@ let appData = {
 	calcPeriod: function(){
 		return appData.budgetMonth * PeriodSelect.value;
 	},
+	noneInput() {
+			document.querySelectorAll('.data input[type=text]').forEach(function (item) {
+				item.disabled = true;
+			});
+			start.style.display = 'none';
+			cancel.style.display = 'block';
+		},
 };
 
 // calcPeriod
-console.log('calcPeriod: ', appData.calcPeriod());
+// console.log('calcPeriod: ', appData.calcPeriod());
 
 MaxButton.addEventListener('click', appData.addIncomeBlock);
 MaxButton2.addEventListener('click', appData.addExpensesBlock);
@@ -200,9 +208,10 @@ SalaryAmount.addEventListener('input', function(){
 	if (SalaryAmount.value.trim()=== '') {
 		startButton.disabled=true;
 	} else {
-				startButton.disabled = false;
+		startButton.disabled = false;
 	}
 });
+console.log();
 
 
 
