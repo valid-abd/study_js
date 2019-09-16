@@ -3,21 +3,11 @@
 
 
 let startButton = document.querySelector('#start');
-
 let MaxButton = document.getElementsByTagName('button')[0];
 let MaxButton2 = document.querySelectorAll('button')[1];
 let cancel = document.getElementById('cancel');
-
-
 let checkbox = document.querySelector('#deposit-check');
-// console.log('checkbox: ', checkbox);
-
 let entryField = document.querySelectorAll('.additional_income-item');
-
-
-// let results = document.querySelectorAll('.result-total');
-// console.log('results: ', results);
-
 let BudgetMonthValue = document.getElementsByClassName('budget_month-value')[0];
 let BudgetDayValue = document.getElementsByClassName('budget_day-value')[0];
 let ExpensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
@@ -37,7 +27,6 @@ let DepositAmount = document.querySelector('.deposit-amount');
 let DepositPercent = document.querySelector('.deposit-percent');
 let TargetAmount = document.querySelector('.target-amount');
 let PeriodSelect = document.querySelector('.period-select');
-// console.log('PeriodSelect: ', PeriodSelect);
 let AdditionalExpensesItem = document.querySelector('.additional_expenses-item');
 let incomeItems = document.querySelectorAll('.income-items');
 
@@ -61,9 +50,7 @@ let appData = {
 		this.budget = +SalaryAmount.value;
 		this.getExpenses();
 		this.getIncome();
-
 		this.getExpensesMonth();
-		// appData.showResult();
 		this.getAddExpenses();
 		this.getAddIncome();
 		this.getBudget();
@@ -71,6 +58,7 @@ let appData = {
 		this.noneInput();
 
 	},
+	
 	showResult: function () {
 		BudgetMonthValue.value = this.budgetMonth;
 		BudgetDayValue.value = this.budgetDay;
@@ -190,15 +178,8 @@ let appData = {
 		cancel.style.display = 'block';
 		cancel.addEventListener('click', this.reset);
 	},
+
 	reset() {
-		// document.querySelectorAll('.data input[type=text]').forEach(function (elem) {
-		// 	elem.onclick = function (e) {
-		// 		let select = this.dataset.clearSelector;
-		// 		document.querySelectorAll(select).forEach(function (item) {
-		// 			item.value = '';
-		// 		});
-		// 	};
-		// });
 		this.income = {} ;
 		this.addIncome = [] ;
 		this.expenses = {} ;
@@ -211,15 +192,19 @@ let appData = {
 		this.budgetMonth = 0 ;
 		this.expensesMonth = 0 ;
 		this.incomeMonth = 0 ;
+
 		document.querySelectorAll('.data input[type = text]').forEach(function(item){
 			item.disabled=false;
 		});
-			document.querySelectorAll('input[type = text]').forEach(function (item) {
-				item.value = '';
-			});
-			start.style.display='block';
-			cancel.style.display='none';
+		document.querySelectorAll('input[type = text]').forEach(function (item) {
+			item.value = '';
+		});
+		
+		startButton.style.display='block';
+		cancel.style.display='none';
+		startButton.disabled = true;
 	},
+
 };
 
 
@@ -239,4 +224,4 @@ SalaryAmount.addEventListener('input', function () {
 		startButton.disabled = false;
 	}
 });
-console.log();
+// console.log();
