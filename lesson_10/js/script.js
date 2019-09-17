@@ -47,14 +47,23 @@ DomElement.prototype.createElement = function(){
 			background: ${this.bg};
 			fonst-size: ${this.fontSize};
 		`;
-
 		div.textContent=this.text; 
 		document.body.appendChild(div);
-	}
+	} else if (this.selector[0] === '#') {
+		const _p = document.createElement('p');
+		_p.style.cssText = `
+			height: ${this.height};
+			width: ${this.width};
+			background: ${this.bg};
+			fonst-size: ${this.fontSize};
+		`;
+		_p.textContent = this.text;
+		document.body.appendChild(p);
+	};
 };
 
 const optionSquareRed = {
-	selector:  '.square-red',
+	selector: '.square-red',
 	height: '150px',
 	width: '150px',
 	bg: 'red',
@@ -62,11 +71,11 @@ const optionSquareRed = {
 };
 
 const square = new DomElement(optionSquareRed, 'Hello');
-
 square.createElement();
 
 
 const AppData = function(){
+
 		this.income = {};
 		this.addIncome = [];
 		this.expenses = {};
@@ -90,6 +99,8 @@ AppData.prototype.chekc = function(){
 
 AppData.prototype.start = function(){
 
+		console.log(this);
+
 		this.budget = +SalaryAmount.value;
 		this.getExpenses();
 		this.getIncome();
@@ -98,8 +109,9 @@ AppData.prototype.start = function(){
 		this.getAddIncome();
 		this.getBudget();
 		this.noneInput();
-		this.eventListeners();
 		this.showResult();
+		this.eventListeners();
+
 
 };
 
@@ -116,8 +128,6 @@ AppData.prototype.start = function(){
 			PeriodSelect.addEventListener('input', function () {
 				IncomePeriodValue.value = _this.calcPeriod();
 			});
-
-
 		};
 
 		AppData.prototype.addExpensesBlock = function () {
@@ -139,7 +149,6 @@ AppData.prototype.start = function(){
 				if (itemExpenses !== '' && cashExpenses !== '') {
 					this.expenses[itemExpenses] = cashExpenses;
 				}
-
 			}, this );
 		};
 
@@ -204,6 +213,7 @@ AppData.prototype.start = function(){
 			return TargetAmount.value / this.budgetMonth;
 			// return appData.mission / appData.budgetMonth;
 		};
+
 		AppData.prototype.getStatusIncome = function () {
 			let cmd = (this.budgetDay >= 800) ? ' Высокий уровень дохода ' :
 				(this.budgetDay >= 300) ? ' Средний уровень дохода ' :
@@ -211,9 +221,11 @@ AppData.prototype.start = function(){
 				' Что то пошло не так ';
 			console.log(cmd);
 		};
+
 		AppData.prototype.calcPeriod = function () {
 			return this.budgetMonth * PeriodSelect.value;
 		};
+
 		AppData.prototype.noneInput = function () {
 			document.querySelectorAll('.data input[type=text]').forEach(function (item) {
 				item.disabled = true;
@@ -253,9 +265,8 @@ AppData.prototype.start = function(){
 AppData.prototype.eventListeners = function (){
 		MaxButton.addEventListener('click', this.addIncomeBlock);
 		MaxButton2.addEventListener('click', this.addExpensesBlock);
-		startButton.addEventListener('click', this.start.bind(AppData));
-		
-
+		startButton.addEventListener('click', this.start.bind(appData));
+	
 		PeriodSelect.addEventListener('input', function () {
 			document.querySelector('.period-amount').textContent = PeriodSelect.value;
 		});
@@ -268,10 +279,10 @@ AppData.prototype.eventListeners = function (){
 				startButton.disabled = false;
 			}
 		});
-		console.log();
-
+		// console.log();
 };
+let appData = new AppData();
 
-AppData.prototype.eventListeners();
-// console.log(AppData.prototype.eventListeners());
+appData.eventListeners();
+
 
